@@ -1,11 +1,11 @@
 import { Router } from 'express'
-import { getAllTickets, createNewTicket } from '../controllers/ticketController.js'
+import { getAllTickets, createNewTicket, findSingleTicket } from '../controllers/ticketController.js'
 
 export const router = Router()
 
 router.get('/', getAllTickets)
 router.post('/create', createNewTicket)
-router.get('/:id', )
+router.get('/:id', findSingleTicket )
 
 
 export const ticketRoutes = router
