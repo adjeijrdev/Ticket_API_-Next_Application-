@@ -46,3 +46,20 @@ export const findSingleTicket = async(req, res)=>{
 
     }
 }
+
+export const deleteTicket = async (req, res) => {
+    try{
+        const ticketId = req.params.id
+
+        const deleteTicket = await Ticket.findByIdAndDelete({ _id: ticketId })
+
+        if(!deleteTicket){
+             res.status(304).json({ message: "could not delete ticket"})
+        }
+
+        return res.status(200).json({ message: "ticket deleted successfully" })
+
+    }catch(e){
+        return res.status(500).json({ message : "Internal server Eeror," + e})
+    }
+}
