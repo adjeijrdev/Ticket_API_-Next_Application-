@@ -30,7 +30,7 @@ export const createNewTicket = async(req, res)=>{
 
 export const findSingleTicket = async(req, res)=>{
     try{
-        const ticketID = req.params.id
+        const ticketID = req.params._id
 
         const singleTicket = await Ticket.findOne(ticketID)
 
@@ -38,7 +38,7 @@ export const findSingleTicket = async(req, res)=>{
             return res.status(404).json({"message": `ticket with ID: ${ticketID} was not found` })
         }
 
-        return res.status(200).json({ singleTicket })
+        return res.status(200).json(singleTicket)
 
         }catch(e){
 
