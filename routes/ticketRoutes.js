@@ -5,6 +5,7 @@ export const router = Router()
 
 router.get('/', getAllTickets)
 router.post('/create', createNewTicket)
+router.get('/:id', )
 
 
 export const ticketRoutes = router
