@@ -30,8 +30,19 @@ export const createNewTicket = async(req, res)=>{
 
 export const findSingleTicket = async(req, res)=>{
     try{
+        const ticketID = req.params.id
 
-    }catch{
+        const singleTicket = await Ticket.findOne(ticketID)
+
+        if(!singleTicket){
+            return res.status(404).json({"message": `ticket with ID: ${ticketID} was not found` })
+        }
+
+        return res.status(200).json({ singleTicket })
+
+        }catch(e){
+
+            res.status(500).json({ message: "Internal server Eeror!, " + e.message })
 
     }
 }
